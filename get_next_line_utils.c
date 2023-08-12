@@ -6,7 +6,7 @@
 /*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:00:53 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/10 20:29:06 by mabdelsa         ###   ########.fr       */
+/*   Updated: 2023/08/12 15:18:44 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
 	if (s1 == NULL)
 		return (ft_strdup(s2));
 	else if (s2 == NULL)
@@ -68,7 +70,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2[j] != '\0')
 		str[i++] = s2[j++];
 	str[i] = '\0';
-	return (str);
+	return (free((char *)s1), str);
 }
 
 char	*ft_strchr(const char *str, int c)

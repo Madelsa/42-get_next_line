@@ -6,18 +6,40 @@
 /*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:10:15 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/11 18:54:42 by mabdelsa         ###   ########.fr       */
+/*   Updated: 2023/08/12 17:11:48 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+// char	*read_buffer(int fd, char *stored)
+// {
+// 	char	*buff;
+// 	int		chars_read;
+
+// 	buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
+// 	if (buff == NULL)
+// 		return (NULL);
+// 	while (ft_strchr(stored, '\n') == NULL)
+// 	{
+// 		chars_read = read(fd, buff, BUFFER_SIZE);
+// 		if (chars_read == -1)
+// 			return (free(buff), free(stored), NULL);
+// 		if (chars_read == 0)
+// 			return (free(buff), NULL);
+// 		buff[chars_read] = '\0';
+// 		stored = ft_strjoin(stored, buff);
+// 	}
+// 	return (free(buff), stored);
+// }
 char	*filter_stored(char *stored)
 {
 	int		i;
 	char	*str;
 
 	i = 0;
+	// if (stored[0] == '\0')
+	// 	return (free(stored), NULL);
 	if (stored[0] == '\0')
 		return (NULL);
 	while (stored[i] != '\0' && stored[i] != '\n')
@@ -38,7 +60,7 @@ char	*update_stored(char *stored)
 	while (stored[i] != '\0' && stored[i] != '\n')
 		i++;
 	str = ft_strdup(stored + i + 1);
-	return (str);
+	return (free(stored), str);
 }
 
 char	*read_buffer(int fd, char *stored)
@@ -47,11 +69,14 @@ char	*read_buffer(int fd, char *stored)
 	int		chars_read;
 
 	buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	chars_read = 1;
-	while (ft_strchr(stored, '\n') == NULL && chars_read != 0)
+	if (buff == NULL)
+		return (NULL);
+	while (ft_strchr(stored, '\n') == NULL)
 	{
 		chars_read = read(fd, buff, BUFFER_SIZE);
 		if (chars_read == -1)
+			return (free(buff), free(stored), NULL);
+		if (chars_read == 0)
 			return (free(buff), free(stored), NULL);
 		buff[chars_read] = '\0';
 		stored = ft_strjoin(stored, buff);
@@ -87,12 +112,12 @@ char	*get_next_line(int fd)
 // 		perror("Error opening file");
 // 		return (1);
 // 	}
-// 	// while ((line = get_next_line(fd)) != NULL)
-// 	// {
-// 	// 	printf("%s\n", line);
-// 	// 	free(line);
-// 	// }
-// 	printf("%s", get_next_line(42));
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s\n", line);
+// 		free(line);
+// 	}
+// 	// printf("%s", get_next_line(fd));
 // 	close(fd);
 // 	return (0);
 // }
