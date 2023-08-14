@@ -6,7 +6,7 @@
 /*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 14:00:53 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/14 18:15:17 by mabdelsa         ###   ########.fr       */
+/*   Updated: 2023/08/14 21:10:45 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *str)
 	size_t	len;
 
 	len = 0;
+	if (!str)
+		return (0);
 	while (str[len] != '\0')
 		len++;
 	return (len);
@@ -70,7 +72,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2[j] != '\0')
 		str[i++] = s2[j++];
 	str[i] = '\0';
-	return (free((char *)s1), str);
+	if (s1)
+		free((char *)s1);
+	return (str);
 }
 
 char	*ft_strchr(const char *str, int c)

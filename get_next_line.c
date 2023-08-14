@@ -6,7 +6,7 @@
 /*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:10:15 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/14 19:22:29 by mabdelsa         ###   ########.fr       */
+/*   Updated: 2023/08/14 21:11:48 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ char	*read_buffer(int fd, char *stored)
 	if (buff == NULL)
 		return (NULL);
 	chars_read = 1;
+
 	while (chars_read > 0 && ft_strchr(stored, '\n') == NULL)
 	{
 		chars_read = read(fd, buff, BUFFER_SIZE);
-		if (chars_read == -1 || (chars_read == 0 && stored == NULL))
+		if (chars_read == -1 || (chars_read == 0 && (stored == NULL || stored[0] == '\0')))
 			return (free(buff), free(stored), NULL);
 		buff[chars_read] = '\0';
 		stored = ft_strjoin(stored, buff);
@@ -87,10 +88,17 @@ char	*get_next_line(int fd)
 
 // 	fd = open("file.txt", O_RDONLY);
 // 	line = get_next_line(fd);
-// 	while (line)
+// 	// while (line)
+// 	// {
+// 	// 	printf("%s", line);
+// 	// 	free(line);
+// 	// 	line = get_next_line(fd);
+// 	// }
+// 	for (int i = 0; i < 2; i++)
 // 	{
 // 		printf("%s", line);
-// 		free(line);
+// 		if (line != NULL)
+// 			free(line);
 // 		line = get_next_line(fd);
 // 	}
 // 	// free(line);
