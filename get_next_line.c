@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahmoud <mahmoud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:10:15 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/13 06:37:40 by mahmoud          ###   ########.fr       */
+/*   Updated: 2023/08/14 19:22:29 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ char	*read_buffer(int fd, char *stored)
 	{
 		chars_read = read(fd, buff, BUFFER_SIZE);
 		if (chars_read == -1 || (chars_read == 0 && stored == NULL))
-			return (free(buff), NULL);
+			return (free(buff), free(stored), NULL);
 		buff[chars_read] = '\0';
 		stored = ft_strjoin(stored, buff);
 	}
 	return (free(buff), stored);
 }
-
 
 char	*filter_stored(char *stored)
 {
@@ -64,13 +63,12 @@ char	*update_stored(char *stored)
 	return (free(stored), str);
 }
 
-
 char	*get_next_line(int fd)
 {
-	static char	*stored;
+	static char	*stored = NULL;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > 4294967295)
 		return (NULL);
 	stored = read_buffer(fd, stored);
 	if (stored == NULL)
@@ -88,17 +86,14 @@ char	*get_next_line(int fd)
 // 	char	*line;
 
 // 	fd = open("file.txt", O_RDONLY);
-// 	if (fd == -1)
+// 	line = get_next_line(fd);
+// 	while (line)
 // 	{
-// 		perror("Error opening file");
-// 		return (1);
-// 	}
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		printf("%s\n", line);
+// 		printf("%s", line);
 // 		free(line);
+// 		line = get_next_line(fd);
 // 	}
-// 	// printf("%s", get_next_line(fd));
+// 	// free(line);
 // 	close(fd);
 // 	return (0);
 // }
