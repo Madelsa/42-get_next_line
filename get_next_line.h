@@ -6,7 +6,7 @@
 /*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:38:15 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/15 15:53:18 by mabdelsa         ###   ########.fr       */
+/*   Updated: 2023/08/15 16:03:25 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,8 @@ char	*ft_strdup(const char *src);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
+char	*read_buffer(int fd, char *stored);
+char	*filter_stored(char *stored);
+char	*update_stored(char *stored);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:10:15 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/15 15:52:57 by mabdelsa         ###   ########.fr       */
+/*   Updated: 2023/08/15 16:01:58 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,3 @@ char	*get_next_line(int fd)
 	stored = update_stored(stored);
 	return (line);
 }
-
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*line;
-
-// 	fd = open("file.txt", O_RDONLY);
-// 	line = get_next_line(fd);
-// 	while (line)
-// 	{
-// 		printf("Line: %s", line);
-// 		free(line);
-// 		line = get_next_line(fd);
-// 	}
-// 	close(fd);
-// 	return (0);
-// }
