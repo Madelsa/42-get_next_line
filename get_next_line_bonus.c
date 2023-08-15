@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 13:10:15 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/15 15:52:57 by mabdelsa         ###   ########.fr       */
+/*   Created: 2023/08/15 14:50:13 by mabdelsa          #+#    #+#             */
+/*   Updated: 2023/08/15 15:50:06 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*read_buffer(int fd, char *stored)
 {
@@ -66,34 +66,42 @@ char	*update_stored(char *stored)
 
 char	*get_next_line(int fd)
 {
-	static char	*stored = NULL;
+	static char	*stored[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483646)
 		return (NULL);
-	stored = read_buffer(fd, stored);
-	if (stored == NULL)
+	stored[fd] = read_buffer(fd, stored[fd]);
+	if (stored[fd] == NULL)
 		return (NULL);
-	line = filter_stored(stored);
+	line = filter_stored(stored[fd]);
 	if (line == NULL)
 		return (NULL);
-	stored = update_stored(stored);
+	stored[fd] = update_stored(stored[fd]);
 	return (line);
 }
 
 // int	main(void)
 // {
 // 	int		fd;
+// 	int		fd1;
+// 	int		fd2;
 // 	char	*line;
 
 // 	fd = open("file.txt", O_RDONLY);
+// 	fd1 = open("file1.txt", O_RDONLY);
+// 	fd2 = open("file2.txt", O_RDONLY);
 // 	line = get_next_line(fd);
 // 	while (line)
 // 	{
-// 		printf("Line: %s", line);
+// 		printf("FD: %d, LINE: %s\n", fd, line);
+// 		free(line);
+//         line = get_next_line(fd1);
+//         printf("FD: %d, LINE: %s\n", fd1, line);
+// 		free(line);
+//         line = get_next_line(fd2);
+//          printf("FD: %d, LINE: %s\n", fd2, line);
 // 		free(line);
 // 		line = get_next_line(fd);
 // 	}
-// 	close(fd);
-// 	return (0);
 // }
