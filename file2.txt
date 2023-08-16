@@ -1,0 +1,2 @@
+Reading from file 3
+done with 3

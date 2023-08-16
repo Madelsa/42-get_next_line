@@ -1,0 +1,2 @@
+Reading from file 2
+done with 2
