@@ -6,7 +6,7 @@
 /*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:50:13 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/16 16:51:00 by mabdelsa         ###   ########.fr       */
+/*   Updated: 2023/08/16 16:53:55 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,30 +79,30 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	main(void)
-{
-	int		fd;
-	int		fd1;
-	int		fd2;
-	char	*line;
+// int	main(void)
+// {
+// 	int		fd;
+// 	int		fd1;
+// 	int		fd2;
+// 	char	*line;
 
-	fd = open("file.txt", O_RDONLY);
-	fd1 = open("file1.txt", O_RDONLY);
-	fd2 = open("file2.txt", O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
-	{
-		printf("FD: %d, LINE: %s\n", fd, line);
-		free(line);
-        line = get_next_line(fd1);
-        printf("FD: %d, LINE: %s\n", fd1, line);
-		free(line);
-        line = get_next_line(fd2);
-         printf("FD: %d, LINE: %s\n", fd2, line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-	close(fd1);
-	close(fd2);
-}
+// 	fd = open("file.txt", O_RDONLY);
+// 	fd1 = open("file1.txt", O_RDONLY);
+// 	fd2 = open("file2.txt", O_RDONLY);
+// 	line = get_next_line(fd);
+// 	while (line)
+// 	{
+// 		printf("FD: %d, LINE: %s\n", fd, line);
+// 		free(line);
+//         line = get_next_line(fd1);
+//         printf("FD: %d, LINE: %s\n", fd1, line);
+// 		free(line);
+//         line = get_next_line(fd2);
+//          printf("FD: %d, LINE: %s\n", fd2, line);
+// 		free(line);
+// 		line = get_next_line(fd);
+// 	}
+// 	close(fd);
+// 	close(fd1);
+// 	close(fd2);
+// }
