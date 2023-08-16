@@ -6,7 +6,7 @@
 /*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:50:13 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/16 14:07:56 by mabdelsa         ###   ########.fr       */
+/*   Updated: 2023/08/16 14:20:10 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ char	*filter_stored(char *stored)
 	char	*str;
 
 	i = 0;
-	if (stored[0] == '\0')
-		return (free(stored), NULL);
 	while (stored[i] != '\0' && stored[i] != '\n')
 		i++;
 	if (stored[i] == '\n' || stored[i] == '\0')
