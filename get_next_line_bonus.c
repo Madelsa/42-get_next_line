@@ -6,7 +6,7 @@
 /*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:50:13 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/16 14:20:10 by mabdelsa         ###   ########.fr       */
+/*   Updated: 2023/08/16 15:51:08 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ char	*read_buffer(int fd, char *stored)
 	char	*buff;
 	int		chars_read;
 
-	buff = malloc(sizeof(char) * (size_t)BUFFER_SIZE + 1);
+	buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (buff == NULL)
 		return (NULL);
 	chars_read = 1;
 	while (chars_read > 0 && ft_strchr(stored, '\n') == NULL)
 	{
-		chars_read = read(fd, buff, (size_t)BUFFER_SIZE);
+		chars_read = read(fd, buff, BUFFER_SIZE);
 		if (chars_read == -1 || (chars_read == 0 && (stored == NULL
 					|| stored[0] == '\0')))
 			return (free(buff), free(stored), NULL);
@@ -67,7 +67,7 @@ char	*get_next_line(int fd)
 	static char	*stored[1024];
 	char		*line;
 
-	if (fd < 0 || (size_t)BUFFER_SIZE <= 0 || (size_t)BUFFER_SIZE > 4294967295)
+	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483647)
 		return (NULL);
 	stored[fd] = read_buffer(fd, stored[fd]);
 	if (stored[fd] == NULL)
