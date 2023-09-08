@@ -6,7 +6,7 @@
 /*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:50:13 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/16 16:53:55 by mabdelsa         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:59:59 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ char	*update_stored(char *stored)
 	if (stored[i] == '\0')
 		return (free(stored), NULL);
 	str = ft_strdup(stored + i + 1);
+	if (!str[0])
+		return (free(str), free(stored), NULL);
 	return (free(stored), str);
 }
 
@@ -67,7 +69,7 @@ char	*get_next_line(int fd)
 	static char	*stored[1024];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483647)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024 || BUFFER_SIZE > INT_MAX)
 		return (NULL);
 	stored[fd] = read_buffer(fd, stored[fd]);
 	if (stored[fd] == NULL)

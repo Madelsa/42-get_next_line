@@ -6,7 +6,7 @@
 /*   By: mabdelsa <mabdelsa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:50:30 by mabdelsa          #+#    #+#             */
-/*   Updated: 2023/08/15 16:06:41 by mabdelsa         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:53:55 by mabdelsa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *str, int c);
