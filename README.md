@@ -8,7 +8,6 @@ This is the implementation of the `get_next_line` function in C, as part of the 
 - [Examples](#examples)
 - [Usage](#usage)
 - [Functionality](#functionality)
-- [Usage](#usage)
 
 ## Description
 
@@ -65,40 +64,7 @@ Here is an example demonstrating the usage of `get_next_line`:
   	close(fd1);
   	close(fd2);
   }
-  ```  
-
-## Usage
-
-To use the `get_next_line` function in your project, follow these steps:
-
-1. Clone the repository:
-
-    ```bash
-    https://github.com/Madelsa/42-get_next_line.git
-    ```
-
-2. Include the header file in your `.c` file:
-
-    ```c
-    #include "get_next_line.h"
-    ```
-    For Bonus:
-    ```c
-    #include "get_next_line_bonus.h"
-    ```
-
-4. Compile the `get_next_line` project by running the following command:
-
-    ```bash
-    gcc get_next_line.c get_next_line_utils.c my_program.c
-    ```
-    For Bonus:
-    ```bash
-    gcc get_next_line_bonus.c get_next_line_utils_bonus.c my_program.c
-    ```
-    `Note:`  the `my_program.c` file is the file that contains your `main` function.
-
-5. Use `get_next_line` in your code to read lines from file descriptors.
+  ```
 
 ## Functionality
 
