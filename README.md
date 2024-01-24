@@ -94,7 +94,7 @@ To use the `get_next_line` function in your project, follow these steps:
     ```
     For Bonus:
     ```bash
-    gcc get_next_line.c get_next_line_utils.c my_program.c
+    gcc get_next_line_bonus.c get_next_line_utils_bonus.c my_program.c
     ```
     `Note:`  the `my_program.c` file is the file that contains your `main` function.
 
